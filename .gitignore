@@ -1,0 +1,5 @@
+# Project exclude paths
+/common_utils/target/
+/service-api/target/
+/service-gateway/target/
+/service-receive/target/
