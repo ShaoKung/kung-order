@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ExternalStorageConfigurationManager" enabled="true" />
+  <component name="FrameworkDetectionExcludesConfiguration">
+    <file type="web" url="file://$PROJECT_DIR$/service-gateway" />
+    <file type="web" url="file://$PROJECT_DIR$/service-receive" />
+  </component>
   <component name="MavenProjectsManager">
     <option name="originalFiles">
       <list>
@@ -10,6 +14,7 @@
         <option value="$PROJECT_DIR$/dubbo-api/pom.xml" />
         <option value="$PROJECT_DIR$/service-dubbo-consumer/pom.xml" />
         <option value="$PROJECT_DIR$/service-dubbo-provider/pom.xml" />
+        <option value="$PROJECT_DIR$/service-query/pom.xml" />
       </list>
     </option>
     <option name="ignoredFiles">

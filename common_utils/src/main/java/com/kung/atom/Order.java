@@ -12,6 +12,24 @@ public class Order {
     String phone ;
     Double commPrice ;
     Integer commCount;
+    String commId;
+    String postId;
+
+    public String getCommId() {
+        return commId;
+    }
+
+    public void setCommId(String commId) {
+        this.commId = commId;
+    }
+
+    public String getPostId() {
+        return postId;
+    }
+
+    public void setPostId(String postId) {
+        this.postId = postId;
+    }
 
     public Date getOrderTime() {
         return orderTime;
@@ -98,8 +116,9 @@ public class Order {
                 ", phone='" + phone + '\'' +
                 ", commPrice=" + commPrice +
                 ", commCount=" + commCount +
+                ", commId='" + commId + '\'' +
+                ", postId='" + postId + '\'' +
                 ", orderTime=" + orderTime +
                 '}';
     }
-
 }

@@ -7,15 +7,19 @@
         <groupId>com.kung</groupId>
         <version>1.0-SNAPSHOT</version>
     </parent>
-
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.kung</groupId>
-    <artifactId>service-gateway</artifactId>
+    <artifactId>service-query</artifactId>
     <version>1.0-SNAPSHOT</version>
-    <packaging>war</packaging>
 
     <dependencies>
+
+        <!--mybatis-plus start -->
+        <dependency><groupId>com.baomidou</groupId>
+            <artifactId>mybatis-plus-boot-starter</artifactId>
+            <version>3.4.2</version>
+        </dependency>
         <!--mysql-->
         <dependency>
             <groupId>mysql</groupId>
@@ -23,6 +27,7 @@
             <scope>runtime</scope>
         </dependency>
 
+        <!--mybatis-plus end -->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-dubbo</artifactId>
@@ -35,7 +40,9 @@
             <groupId>com.kung</groupId>
             <artifactId>service-api</artifactId>
             <version>1.0-SNAPSHOT</version>
+            <scope>compile</scope>
         </dependency>
+
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-actuator</artifactId>
@@ -44,8 +51,8 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
-    </dependencies>
 
+    </dependencies>
     <build>
         <plugins>
             <plugin>

@@ -7,10 +7,11 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="service-gateway" />
-        <module name="service-api" />
         <module name="service-receive" />
+        <module name="service-api" />
         <module name="common_utils" />
+        <module name="service-gateway" />
+        <module name="service-query" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
