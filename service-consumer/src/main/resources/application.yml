@@ -1,0 +1,26 @@
+server:
+  port: 9532
+spring:
+  application:
+    name: service-consumer
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/busiOrder?characterEncoding=utf-8&&serverTimezone=GMT%2B8
+    username: root
+    password: hdY19900822
+dubbo:
+  registry:
+    address: spring-cloud://localhost
+  application:
+    qos-enable: false
+  protocol:
+    name: dubbo
+    port: -1
+  scan:
+    base-packages: com.kung.service.impl
+rocketmq:
+  name-server: localhost:9876
