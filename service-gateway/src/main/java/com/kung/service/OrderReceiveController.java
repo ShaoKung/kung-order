@@ -57,12 +57,14 @@ public class OrderReceiveController {
     @RequestMapping(value ="/api/query")
     @ResponseBody
     public String queryOrderLog(@RequestBody String json){
-        System.out.println(json);
+        log.info("com.kung.service.OrderReceiveController.queryOrderLog request :"+json);
         JSONObject jsonObject = JSON.parseObject(json);
         String appkey=jsonObject.getString("APPKEY");
         jsonObject.remove("APPKEY");
         List<OrderLog> orderLogList = orderQueryService.queryOrderList(jsonObject);
         JSONArray result =  (JSONArray) JSONObject.toJSON(orderLogList);
-        return RestRespGeneral.successResp(result.toJSONString());
+        String resp = RestRespGeneral.successResp(result.toJSONString()) ;
+        log.info("com.kung.service.OrderReceiveController.queryOrderLog request :"+resp);
+        return resp;
     }
 }
