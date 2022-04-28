@@ -12,12 +12,13 @@ import com.kung.OrderSubmitService;
 import com.kung.RestRespGeneral;
 import com.kung.atom.OrderLog;
 import org.apache.dubbo.config.annotation.Reference;
+import org.slf4j.Logger;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
-
+import org.slf4j.LoggerFactory;
 @RestController
 public class OrderReceiveController {
+    public static final Logger log = LoggerFactory.getLogger(OrderReceiveController.class);
 
     @Reference
     OrderSubmitService orderSubmitService ;
@@ -34,8 +35,11 @@ public class OrderReceiveController {
     @RequestMapping(value ="/api/save")
     @ResponseBody
     public String save(@RequestBody String json){
+        log.info("com.kung.service.OrderReceiveController.save request :"+json);
         System.out.println(json);
-        return orderSubmitService.orderCommon(json);
+        String result = orderSubmitService.orderCommon(json);
+        log.info("com.kung.service.OrderReceiveController.save response :"+result);
+        return result;
     }
 
 //    @GetMapping(value ="/api/update")
