@@ -2,12 +2,15 @@ package com.kung.atom;
 
 import com.baomidou.mybatisplus.annotation.TableName;
 
+import java.io.Serializable;
 import java.util.Date;
 
 @TableName("T_BUSI_ORDERLOG")
-public class OrderLog {
+public class OrderLog implements Serializable {
     String orderId;
     Date acceptDate ;
+    String orderMsg ;
+    String provinceCode;
 
     public String getOrderMsg() {
         return orderMsg;
@@ -17,8 +20,6 @@ public class OrderLog {
         this.orderMsg = orderMsg;
     }
 
-    String orderMsg ;
-    String provinceCode;
 
     public String getOrderId() {
         return orderId;
