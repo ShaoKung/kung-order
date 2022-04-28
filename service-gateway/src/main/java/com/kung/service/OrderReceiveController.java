@@ -3,11 +3,13 @@ package com.kung.service;
 //import com.kung.EchoService;
 //import com.kung.OrderDeleteService;
 import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.kung.OrderQueryService;
 import com.kung.OrderSubmitService;
 //import com.kung.OrderUpdateService;
 //import com.kung.atom.Order;
+import com.kung.RestRespGeneral;
 import com.kung.atom.OrderLog;
 import org.apache.dubbo.config.annotation.Reference;
 import org.springframework.web.bind.annotation.*;
@@ -50,9 +52,13 @@ public class OrderReceiveController {
 
     @RequestMapping(value ="/api/query")
     @ResponseBody
-    public List<OrderLog> queryOrderLog(@RequestBody String json){
+    public String queryOrderLog(@RequestBody String json){
         System.out.println(json);
         JSONObject jsonObject = JSON.parseObject(json);
-        return orderQueryService.queryOrderList(jsonObject);
+        String appkey=jsonObject.getString("APPKEY");
+        jsonObject.remove("APPKEY");
+        List<OrderLog> orderLogList = orderQueryService.queryOrderList(jsonObject);
+        JSONArray result =  (JSONArray) JSONObject.toJSON(orderLogList);
+        return RestRespGeneral.successResp(result.toJSONString());
     }
 }

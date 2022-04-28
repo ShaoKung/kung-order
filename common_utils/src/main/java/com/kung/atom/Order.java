@@ -1,8 +1,11 @@
 package com.kung.atom;
 
+import com.baomidou.mybatisplus.annotation.TableName;
+import java.io.Serializable;
 import java.util.Date;
 
-public class Order {
+@TableName("T_BUSI_ORDER")
+public class Order implements Serializable {
 
     String orderId;
     String provinceCode;

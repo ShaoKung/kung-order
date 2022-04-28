@@ -15,6 +15,7 @@
         <option value="$PROJECT_DIR$/service-dubbo-consumer/pom.xml" />
         <option value="$PROJECT_DIR$/service-dubbo-provider/pom.xml" />
         <option value="$PROJECT_DIR$/service-query/pom.xml" />
+        <option value="$PROJECT_DIR$/service-consumer/pom.xml" />
       </list>
     </option>
     <option name="ignoredFiles">
