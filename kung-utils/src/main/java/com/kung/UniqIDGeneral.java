@@ -6,8 +6,7 @@ import java.util.Random;
 
 public class UniqIDGeneral {
     public static String generalUUID(){
-        Date date=new Date();
-        SimpleDateFormat sdf=new SimpleDateFormat("YYYYMMDDHH24MMSS");
+        SimpleDateFormat sdf=new SimpleDateFormat("yyyyMMddHHmmss");
         Random random = new Random();
         return sdf.format(new Date())+Math.round(random.nextDouble()*10000);
     }

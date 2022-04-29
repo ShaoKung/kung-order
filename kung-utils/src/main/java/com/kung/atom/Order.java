@@ -1,5 +1,6 @@
 package com.kung.atom;
 
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableName;
 import java.io.Serializable;
 import java.util.Date;
@@ -7,16 +8,29 @@ import java.util.Date;
 @TableName("T_BUSI_ORDER")
 public class Order implements Serializable {
 
+    @TableField("ORDER_ID")
     String orderId;
+    @TableField("PROVINCE_CODE")
     String provinceCode;
+    @TableField("CITY")
     String city;
+    @TableField("DISTRICT")
     String district;
+    @TableField("ADDRESS")
     String address ;
+    @TableField("PHONE")
     String phone ;
+    @TableField("COMM_PRICE")
     Double commPrice ;
+    @TableField("COMM_COUNT")
     Integer commCount;
+    @TableField("COMM_ID")
     String commId;
+    @TableField("POST_ID")
     String postId;
+    @TableField("ORDER_TIME")
+    Date orderTime ;
+
 
     public String getCommId() {
         return commId;
@@ -41,8 +55,6 @@ public class Order implements Serializable {
     public void setOrderTime(Date orderTime) {
         this.orderTime = orderTime;
     }
-
-    Date orderTime ;
 
     public String getOrderId() {
         return orderId;
