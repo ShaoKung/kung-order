@@ -8,11 +8,11 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="service-receive" />
-        <module name="common_utils" />
-        <module name="service-api" />
-        <module name="service-gateway" />
-        <module name="service-query" />
         <module name="service-consumer" />
+        <module name="service-gateway" />
+        <module name="kung-utils" />
+        <module name="kung-api" />
+        <module name="service-query" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
@@ -22,8 +22,8 @@
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
-      <module name="common_utils" options="" />
-      <module name="service-api" options="" />
+      <module name="kung-api" options="" />
+      <module name="kung-utils" options="" />
       <module name="service-gateway" options="" />
       <module name="service-receive" options="" />
     </option>

@@ -1,6 +1,6 @@
 # spring-cloud-alibaba
 init version dubbo
-# common_utils 公共的方法jar
+# kung_utils 公共的方法jar
 # service-api dubbo服务接口类jar
 # service-gateway 网关服务，后需要支撑熔断，限流，负载均衡等等，日志记录最高级别，不做业务处理，只做请求分发
 # service-receive 接收服务，接收网关进来的消息，落表后发消息，或者是调用其他的变更类服务，唯一不调用的是查询服务，后需要支撑熔断，限流，负载均衡

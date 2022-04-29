@@ -10,8 +10,8 @@
     <packaging>pom</packaging>
 
     <modules>
-        <module>common_utils</module>
-        <module>service-api</module>
+        <module>kung-utils</module>
+        <module>kung-api</module>
     </modules>
 
     <properties>

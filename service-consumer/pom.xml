@@ -31,7 +31,7 @@
         </dependency>
         <dependency>
             <groupId>com.kung</groupId>
-            <artifactId>service-api</artifactId>
+            <artifactId>kung-api</artifactId>
             <version>1.0-SNAPSHOT</version>
             <scope>compile</scope>
         </dependency>
