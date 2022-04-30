@@ -11,7 +11,7 @@ public class OrderLog implements Serializable {
     Date acceptDate ;
     String orderMsg ;
     String provinceCode;
-
+    String type;
     public String getOrderMsg() {
         return orderMsg;
     }
@@ -20,6 +20,13 @@ public class OrderLog implements Serializable {
         this.orderMsg = orderMsg;
     }
 
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
 
     public String getOrderId() {
         return orderId;

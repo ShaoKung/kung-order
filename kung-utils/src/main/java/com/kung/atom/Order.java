@@ -30,7 +30,16 @@ public class Order implements Serializable {
     String postId;
     @TableField("ORDER_TIME")
     Date orderTime ;
+    @TableField("EXT_ORDER_ID")
+    String extOrderId ;
 
+    public String getExtOrderId() {
+        return extOrderId;
+    }
+
+    public void setExtOrderId(String extOrderId) {
+        this.extOrderId = extOrderId;
+    }
 
     public String getCommId() {
         return commId;

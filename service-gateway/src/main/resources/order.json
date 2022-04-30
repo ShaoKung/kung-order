@@ -1,0 +1,49 @@
+{
+  "order": {
+    "provinceCode": "11",
+    "city": "110",
+    "district": "11023",
+    "address": "北京市朝阳区幸福里小区2栋3单元105",
+    "phone": "15820890980",
+    "commPrice": 20.0,
+    "commCount": 3,
+    "commId": "19002391",
+    "extOrderId": "20220429112100",
+    "postInfo": [{
+      "postId": "20220429223001",
+      "postAddress": "北京市朝阳区幸福里小区2栋3单元105",
+      "checked": "0",
+      "checkStaff": "2",
+      "collectStaff": "12",
+      "collectTime": "2022-04-29 23:40:30",
+      "weight": 12,
+      "fromProv": "20",
+      "fromCity": "025",
+      "fromDist": "025110",
+      "fromAddr": "江苏南京",
+      "destProv": "51",
+      "destCity": "0551",
+      "destDist": "055110",
+      "destAddr": "九运国际24-1301",
+      "receName": "邵清",
+      "recePhon": "157206108970",
+      "remark": "测试单"
+    }],
+    "payInfo": [{
+      "payId": "19000031",
+      "payType": "1",
+      "payTime": "2022-04-29 23:40:30",
+      "payMoney": 200,
+      "payAccount": "313510940"
+    }],
+    "orderAttr": [
+      {
+        "goodType": "1"
+      },
+      {
+        "autoPost": "1"
+      }
+    ]
+  },
+  "authKey": "9901"
+}

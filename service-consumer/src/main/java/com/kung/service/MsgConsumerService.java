@@ -1,8 +1,14 @@
 package com.kung.service;
 import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.kung.atom.Order;
+import com.kung.atom.OrderPay;
+import com.kung.atom.OrderPost;
 import com.kung.mapper.OrderMapper;
+import com.kung.mapper.OrderPayMapper;
+import com.kung.mapper.OrderPostMapper;
+import org.apache.dubbo.common.utils.CollectionUtils;
 import org.apache.rocketmq.spring.annotation.ConsumeMode;
 import org.apache.rocketmq.spring.annotation.RocketMQMessageListener;
 import org.apache.rocketmq.spring.core.RocketMQListener;
@@ -24,6 +30,13 @@ public class MsgConsumerService implements RocketMQListener<String> {
 
     @Autowired
     private OrderMapper orderMapper ;
+
+    @Autowired
+    private OrderPayMapper orderPayMapper ;
+
+    @Autowired
+    private OrderPostMapper orderPostMapper ;
+
     @Override
     public void onMessage(String msg) {
         log.info("com.kung.service.MsgConsumerService.onMessage receive info :"+ msg);
@@ -39,8 +52,48 @@ public class MsgConsumerService implements RocketMQListener<String> {
         order.setDistrict(orderJson.getString("district"));
         order.setOrderTime(new Date());
         order.setPhone(orderJson.getString("phone"));
-        order.setPostId(orderJson.getString("postId"));
         order.setProvinceCode(orderJson.getString("provinceCode"));
+        order.setExtOrderId(orderJson.getString("extOrderId"));
+
+        JSONArray payInfo = orderJson.getJSONArray("payInfo");
+        if(!CollectionUtils.isEmpty(payInfo)){
+            for (int i=0;i<payInfo.size();i++) {
+                JSONObject pay =  (JSONObject) payInfo.get(i);
+                OrderPay orderPay = new OrderPay();
+                orderPay.setOrderId(orderJson.getString("orderId"));
+                orderPay.setPayAccount(pay.getString("payAccount"));
+                orderPay.setPayId(pay.getString("payId"));
+                orderPay.setPayTime(new Date());
+                orderPay.setPayMoney(pay.getDouble("payMoney"));
+                orderPayMapper.insert(orderPay);
+            }
+        }
+
+        JSONArray postInfo = orderJson.getJSONArray("postInfo");
+        if(!CollectionUtils.isEmpty(postInfo)){
+            for (int i=0;i<postInfo.size();i++) {
+              JSONObject post =  (JSONObject) postInfo.get(i);
+                OrderPost orderPost = new OrderPost();
+                orderPost.setPostId(post.getString("postId"));
+                orderPost.setOrderId(orderJson.getString("orderId"));
+                // 已经验视
+                orderPost.setChecked(post.getString("checked"));
+                orderPost.setCheckStaff(post.getString("checkStaff"));
+                orderPost.setCollectStaff(post.getString("collectStaff"));
+                orderPost.setCollectTime(new Date());
+                orderPost.setDestAddr(post.getString("descAddr"));
+                orderPost.setDestCity(post.getString("descCity"));
+                orderPost.setDestDist(post.getString("descDist"));
+                orderPost.setDestProv(post.getString("descProv"));
+                orderPost.setFromAddr(post.getString("fromAddr"));
+                orderPost.setFromDist(post.getString("fromDist"));
+                orderPost.setFromCity(post.getString("fromCity"));
+                orderPost.setFromProv(post.getString("fromProv"));
+                orderPost.setReceName(post.getString("receName"));
+                orderPost.setRecePhon(post.getString("recePhon"));
+                orderPostMapper.insert(orderPost);
+            }
+        }
         orderMapper.insert(order);
     }
 }

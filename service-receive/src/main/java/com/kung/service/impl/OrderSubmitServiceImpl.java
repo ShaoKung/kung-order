@@ -38,6 +38,8 @@ public class OrderSubmitServiceImpl implements OrderSubmitService {
         orderLog.setProvinceCode(orderJson.getString("provinceCode"));
         orderLog.setAcceptDate(new Date());
         orderLog.setOrderMsg(orderJson.toJSONString());
+        // 下单消息
+        orderLog.setType("1");
         orderLogMapper.insert(orderLog);
         //发送消息用以消费者落表
         rocketMQTemplate.convertAndSend("TopicTest",orderLog);
