@@ -68,7 +68,7 @@ public class OrderReceiveController {
         if(StringUtils.isEmpty(authKey)||!"9901".equals(authKey)){
             return  RestRespGeneral.failRespWithMsg("未授权访问,请联系管理员获取权限");
         }
-        List<OrderLog> orderLogList = orderQueryService.queryOrderList(jsonObject);
+        List<OrderLog> orderLogList = orderQueryService.queryOrderList(jsonObject.getJSONObject("order"));
         JSONArray result =  (JSONArray) JSONObject.toJSON(orderLogList);
         String resp = RestRespGeneral.successResp(result.toJSONString()) ;
         log.info("com.kung.service.OrderReceiveController.queryOrderLog request :"+resp);
