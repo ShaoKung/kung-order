@@ -84,10 +84,10 @@ public class MsgConsumerService implements RocketMQListener<String> {
                 orderPost.setCheckStaff(post.getString("checkStaff"));
                 orderPost.setCollectStaff(post.getString("collectStaff"));
                 orderPost.setCollectTime(new Date());
-                orderPost.setDestAddr(post.getString("descAddr"));
-                orderPost.setDestCity(post.getString("descCity"));
-                orderPost.setDestDist(post.getString("descDist"));
-                orderPost.setDestProv(post.getString("descProv"));
+                orderPost.setDestAddr(post.getString("destAddr"));
+                orderPost.setDestCity(post.getString("destCity"));
+                orderPost.setDestDist(post.getString("destDist"));
+                orderPost.setDestProv(post.getString("destProv"));
                 orderPost.setFromAddr(post.getString("fromAddr"));
                 orderPost.setFromDist(post.getString("fromDist"));
                 orderPost.setFromCity(post.getString("fromCity"));
