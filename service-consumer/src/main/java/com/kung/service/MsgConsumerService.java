@@ -16,9 +16,12 @@ import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.slf4j.LoggerFactory;
+import org.springframework.transaction.annotation.Transactional;
+
 import java.util.Date;
 
 @Service
+@Transactional
 @RocketMQMessageListener(
         topic = "TopicTest",
         consumerGroup = "test-group",
@@ -54,7 +57,7 @@ public class MsgConsumerService implements RocketMQListener<String> {
         order.setPhone(orderJson.getString("phone"));
         order.setProvinceCode(orderJson.getString("provinceCode"));
         order.setExtOrderId(orderJson.getString("extOrderId"));
-
+        orderMapper.insert(order);
         JSONArray payInfo = orderJson.getJSONArray("payInfo");
         if(!CollectionUtils.isEmpty(payInfo)){
             for (int i=0;i<payInfo.size();i++) {
@@ -91,9 +94,9 @@ public class MsgConsumerService implements RocketMQListener<String> {
                 orderPost.setFromProv(post.getString("fromProv"));
                 orderPost.setReceName(post.getString("receName"));
                 orderPost.setRecePhon(post.getString("recePhon"));
+                orderPost.setWeight(post.getDouble("weight"));
                 orderPostMapper.insert(orderPost);
             }
         }
-        orderMapper.insert(order);
     }
 }
