@@ -12,6 +12,10 @@
     <modules>
         <module>kung-utils</module>
         <module>kung-api</module>
+        <module>service-consumer</module>
+        <module>service-receive</module>
+        <module>service-gateway</module>
+        <module>service-query</module>
     </modules>
 
     <properties>
@@ -54,6 +58,4 @@
             </dependency>
         </dependencies>
     </dependencyManagement>
-
-
 </project>
