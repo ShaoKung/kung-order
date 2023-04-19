@@ -3,7 +3,7 @@ server:
 
 spring:
   application:
-    name: service-receive
+    name: kung-receive-service
   cloud:
     nacos:
       discovery:

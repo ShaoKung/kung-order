@@ -2,7 +2,7 @@ server:
   port: 9532
 spring:
   application:
-    name: service-consumer
+    name: kung-consumer-service
   cloud:
     nacos:
       discovery:
