@@ -1,5 +1,9 @@
 # Project exclude paths
 /common_utils/target/
 /service-api/target/
-/service-gateway/target/
-/service-receive/target/
+/kung-gateway-service/target/
+/kung-consumer-service/target/
+/kung-query-service/target/
+/kung-receive-service/target/
+/kung-api/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst
+/kung-api/target/classes/com/kung/EchoService.class

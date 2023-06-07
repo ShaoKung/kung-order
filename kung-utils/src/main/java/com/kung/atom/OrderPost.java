@@ -6,7 +6,7 @@ import com.baomidou.mybatisplus.annotation.TableName;
 import java.io.Serializable;
 import java.util.Date;
 
-@TableName("T_BUSI_POSTINFo")
+@TableName("T_BUSI_POSTINFO")
 public class OrderPost implements Serializable {
     @TableField("ORDER_ID")
     String orderId;

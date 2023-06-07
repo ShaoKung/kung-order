@@ -7,17 +7,21 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="service-receive" />
-        <module name="service-consumer" />
-        <module name="service-gateway" />
         <module name="kung-utils" />
+        <module name="kung-consumer-service" />
+        <module name="kung-gateway-service" />
         <module name="kung-api" />
-        <module name="service-query" />
+        <module name="kung-query-service" />
+        <module name="kung-receive-service" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="dubbo_api" target="1.5" />
+      <module name="kunge-query-servic" target="1.8" />
       <module name="nacos-provider" target="1.5" />
+      <module name="service-gateway" target="1.8" />
+      <module name="service-query" target="1.8" />
+      <module name="service-receive" target="1.8" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">

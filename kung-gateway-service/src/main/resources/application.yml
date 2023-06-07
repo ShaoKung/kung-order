@@ -9,15 +9,15 @@ spring:
       discovery:
         server-addr: 127.0.0.1:8848
   datasource:
-    driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/busiOrder?characterEncoding=utf-8&&serverTimezone=GMT%2B8
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/service_order?characterEncoding=utf-8&&serverTimezone=GMT%2B8
     username: root
-    password: hdY19900822
+    password: 123456
 dubbo:
   registry:
     address: spring-cloud://localhost
   application:
     qos-enable: false
   cloud:
-    subscribed-services: service-receive,service-query
+    subscribed-services: kung-query-service,kung-receive-service
 

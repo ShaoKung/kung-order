@@ -9,9 +9,30 @@ spring:
         server-addr: 127.0.0.1:8848
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/busiOrder?characterEncoding=utf-8&&serverTimezone=GMT%2B8
+    url: jdbc:mysql://localhost:3306/service_order?characterEncoding=utf-8&&serverTimezone=GMT%2B8
     username: root
-    password: hdY19900822
+    password: 123456
+
+  kafka:
+    bootstrap-servers: localhost:2181
+    consumer:
+      group-id: kafka-demo-kafka-group
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer #关键字的序列化类
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer #值的序列化类
+      properties: #账号密码配置
+        sasl.mechanism: PLAIN
+        security.protocol: SASL_PLAINTEXT
+        sasl.jaas.config: org.apache.kafka.common.security.plain.PlainLoginModule required username="消费者账号" password="密码";
+    producer:
+      group-id: kafka-demo-kafka-group
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer #关键字的序列化类
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer #值的序列化类
+      properties: #账号密码配置
+        session.timeout.ms: 15000
+        sasl.mechanism: PLAIN
+        security.protocol: SASL_PLAINTEXT
+        sasl.jaas.config: org.apache.kafka.common.security.plain.PlainLoginModule required username="生产者账号" password="密码";
+
 dubbo:
   registry:
     address: spring-cloud://localhost
@@ -22,5 +43,5 @@ dubbo:
     port: -1
   scan:
     base-packages: com.kung.service.impl
-rocketmq:
-  name-server: localhost:9876
+
+

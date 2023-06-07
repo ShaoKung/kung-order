@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ExternalStorageConfigurationManager" enabled="true" />
   <component name="FrameworkDetectionExcludesConfiguration">
-    <file type="web" url="file://$PROJECT_DIR$/service-gateway" />
-    <file type="web" url="file://$PROJECT_DIR$/service-receive" />
+    <file type="web" url="file://$PROJECT_DIR$/kung-gateway-service" />
+    <file type="web" url="file://$PROJECT_DIR$/kung-receive-service" />
   </component>
   <component name="MavenProjectsManager">
     <option name="originalFiles">
