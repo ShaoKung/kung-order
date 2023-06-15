@@ -5,7 +5,7 @@ import com.baomidou.mybatisplus.annotation.TableName;
 import java.io.Serializable;
 import java.util.Date;
 
-@TableName("T_BUSI_ORDERLOG")
+@TableName("T_BUSI_EXT")
 public class OrderLog implements Serializable {
     String orderId;
     Date acceptDate ;

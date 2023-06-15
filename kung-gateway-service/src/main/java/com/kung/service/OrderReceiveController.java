@@ -5,7 +5,7 @@ import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.kung.OrderQueryService;
-import com.kung.OrderSubmitService;
+import com.kung.OrderReceiveService;
 //import com.kung.OrderUpdateService;
 //import com.kung.atom.Order;
 import com.kung.RestRespGeneral;
@@ -21,44 +21,26 @@ public class OrderReceiveController {
     public static final Logger log = LoggerFactory.getLogger(OrderReceiveController.class);
 
     @Reference
-    OrderSubmitService orderSubmitService ;
+    OrderReceiveService orderReceiveService ;
 
     @Reference
     OrderQueryService orderQueryService ;
 
-//    @Reference
-//    OrderUpdateService orderUpdateService;
-//
-//    @Reference
-//    OrderDeleteService orderDeleteService;
-
-    @RequestMapping(value ="/api/save")
+    @RequestMapping(value ="/common/receive")
     @ResponseBody
-    public String save(@RequestBody String json){
-        log.info("com.kung.service.OrderReceiveController.save request :"+json);
+    public String receive(@RequestBody String json){
+        log.info("com.kung.service.OrderReceiveController.receive request :"+json);
         JSONObject jsonObject = JSON.parseObject(json);
         String authKey=jsonObject.getString("authKey");
         if(StringUtils.isEmpty(authKey)||!"9901".equals(authKey)){
             return  RestRespGeneral.failRespWithMsg("未授权访问,请联系管理员获取权限");
         }
-        String result = orderSubmitService.orderCommon(jsonObject.getJSONObject("order").toJSONString());
-        log.info("com.kung.service.OrderReceiveController.save response :"+result);
+        String result = orderReceiveService.orderReceive(jsonObject.getJSONObject("order").toJSONString());
+        log.info("com.kung.service.OrderReceiveController.receive response :"+result);
         return result;
     }
 
-//    @GetMapping(value ="/api/update")
-//    @ResponseBody
-//    public String update(String json){
-//        return orderUpdateService.updateOrderById(new Order());
-//    }
-//
-//    @GetMapping(value ="/api/delete")
-//    @ResponseBody
-//    public String delete(String json){
-//        return orderDeleteService.deleteOrder(new Order());
-//    }
-
-    @RequestMapping(value ="/api/query")
+    @RequestMapping(value ="/common/query")
     @ResponseBody
     public String queryOrderLog(@RequestBody String json){
         log.info("com.kung.service.OrderReceiveController.queryOrderLog request :"+json);

@@ -2,10 +2,11 @@ package com.kung.service.impl;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
-import com.kung.OrderSubmitService;
+import com.kung.OrderReceiveService;
 import com.kung.RestRespGeneral;
 import com.kung.UniqIDGeneral;
 import com.kung.atom.OrderLog;
+import com.kung.constant.CommonEnum;
 import com.kung.mapper.OrderLogMapper;
 import org.apache.dubbo.config.annotation.Service;
 import org.apache.rocketmq.spring.core.RocketMQTemplate;
@@ -16,7 +17,7 @@ import org.slf4j.LoggerFactory;
 
 
 @Service
-public class OrderSubmitServiceImpl implements OrderSubmitService {
+public class OrderReceiveServiceImpl implements OrderReceiveService {
 
     @Autowired
     private OrderLogMapper orderLogMapper ;
@@ -24,11 +25,13 @@ public class OrderSubmitServiceImpl implements OrderSubmitService {
     @Autowired
     private RocketMQTemplate rocketMQTemplate;
 
-    private static final Logger log = LoggerFactory.getLogger(OrderSubmitServiceImpl.class);
+    private static final Logger log = LoggerFactory.getLogger(OrderReceiveServiceImpl.class);
+
+    public static final String COMMON_MSG="1";
 
     @Override
-    public String orderCommon(String json) {
-        log.info("com.kung.service.impl.OrderSubmitServiceImpl.orderCommon request :"+json);
+    public String orderReceive(String json) {
+        log.info("com.kung.service.impl.OrderSubmitServiceImpl.orderReceive request :"+json);
         String orderId=UniqIDGeneral.generalUUID();
         JSONObject orderJson = JSON.parseObject(json);
         //补齐报文中内部订单ID
@@ -39,12 +42,12 @@ public class OrderSubmitServiceImpl implements OrderSubmitService {
         orderLog.setAcceptDate(new Date());
         orderLog.setOrderMsg(orderJson.toJSONString());
         // 下单消息
-        orderLog.setType("1");
+        orderLog.setType(COMMON_MSG);
         orderLogMapper.insert(orderLog);
         //发送消息用以消费者落表
         rocketMQTemplate.convertAndSend("TopicTest",orderLog);
         String result = RestRespGeneral.successResp(orderId);
-        log.info("com.kung.service.impl.OrderSubmitServiceImpl.orderCommon response :"+result);
+        log.info("com.kung.service.impl.OrderSubmitServiceImpl.orderReceive response :"+result);
         return result ;
     }
 }
